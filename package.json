@@ -24,7 +24,8 @@
     "build": "tsc",
     "format": "prettier --write src/**/*.ts",
     "lint": "eslint --fix src/**/*.ts",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "config": {
     "commitizen": {
