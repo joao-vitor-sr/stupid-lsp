@@ -13,6 +13,8 @@
     "@types/prettier": "^2.6.0",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.15.0",
     "husky": "^8.0.0",
     "prettier": "^2.6.2",
@@ -23,5 +25,10 @@
     "format": "prettier --write src/**/*.ts",
     "lint": "eslint --fix src/**/*.ts",
     "prepare": "husky install"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
