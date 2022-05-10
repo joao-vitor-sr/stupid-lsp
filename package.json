@@ -1,5 +1,5 @@
 {
-  "name": "lsp",
+  "name": "stupid-lsp",
   "version": "1.0.0",
   "description": "A fake lsp server",
   "main": "index.js",
@@ -31,5 +31,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "vscode-languageserver": "^7.0.0",
+    "vscode-languageserver-textdocument": "^1.0.4",
+    "vscode-languageserver-types": "^3.16.0"
   }
 }
