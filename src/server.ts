@@ -4,6 +4,7 @@ import {
   createConnection,
 } from 'vscode-languageserver/node';
 import STUPIDServerInit from './stupidServerInit';
+import { SettingsState } from './stupidSettings';
 
 const connection: Connection =
   process.argv.indexOf('--stdio') === -1
@@ -25,4 +26,6 @@ console.error = (arg) => {
   }
 };
 
-new STUPIDServerInit(connection).start();
+const stupidSettings = new SettingsState();
+
+new STUPIDServerInit(connection, stupidSettings).start();
