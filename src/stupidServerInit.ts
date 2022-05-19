@@ -1,5 +1,6 @@
 import {
   Connection,
+  InitializeParams,
   InitializeResult,
   TextDocumentSyncKind,
 } from 'vscode-languageserver/node';
@@ -19,11 +20,14 @@ class STUPIDServerInit {
      * The server receives the root path(s) of the workspace and the client
      * capabilities.
      */
-    connection.onInitialize(() => this.connectionInitialized());
+    connection.onInitialize((params: InitializeParams) =>
+      this.connectionInitialized(params)
+    );
   }
 
   // public for test setup
-  private connectionInitialized(): InitializeResult {
+  private connectionInitialized(params: InitializeParams): InitializeResult {
+    this.stupidSettings.capabilities = params.capabilities;
     this.registerHandlers();
 
     return {
