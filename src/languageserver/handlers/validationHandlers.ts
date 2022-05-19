@@ -82,14 +82,12 @@ export class ValidationHandler {
     return depthChars;
   }
 
-  validate(textDocument: TextDocument): void {
-    const txt = textDocument.getText();
-
+  private returnDiagnosticsFromErrors(
+    errorsChars: charDiagnosticError[],
+    textDocument: TextDocument
+  ): Diagnostic[] {
     const diagnostics: Diagnostic[] = [];
-
-    const parenthesPositions = this.returnErrorsFromTxt(txt);
-
-    parenthesPositions.forEach((position) => {
+    errorsChars.forEach((position) => {
       const diagnostic: Diagnostic = {
         severity: DiagnosticSeverity.Warning,
         range: {
@@ -101,6 +99,16 @@ export class ValidationHandler {
       };
       diagnostics.push(diagnostic);
     });
+
+    return diagnostics;
+  }
+
+  validate(textDocument: TextDocument): void {
+    const errorsChars = this.returnErrorsFromTxt(textDocument.getText());
+    const diagnostics = this.returnDiagnosticsFromErrors(
+      errorsChars,
+      textDocument
+    );
 
     this.connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
   }
