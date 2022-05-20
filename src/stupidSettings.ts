@@ -5,6 +5,7 @@ export class SettingsState {
   constructor() {
     this.maxErrorsComputed = 5000;
     this.charsComparassion = [['(', ')'], ['[', ']']];
+    this.disableBadLanguage = false;
   }
 
   documents: TextDocuments<TextDocument> | TextDocumentTestManager =
@@ -12,6 +13,7 @@ export class SettingsState {
   capabilities: ClientCapabilities | undefined;
   maxErrorsComputed: number;
   charsComparassion: string[][];
+  disableBadLanguage: boolean;
 }
 
 export class TextDocumentTestManager extends TextDocuments<TextDocument> {
