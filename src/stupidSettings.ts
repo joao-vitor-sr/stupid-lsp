@@ -11,8 +11,7 @@ export class SettingsState {
     this.disableBadLanguage = false;
 
     this.excludeEndedWith = ["'", '"'];
-    this.excludeBeginningWith = ["'", '"'];
-    this.excludeSurroundedBy = ["'", '"'];
+    this.excludeBeginningWith = ['"', "'"];
   }
 
   documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
@@ -22,5 +21,4 @@ export class SettingsState {
   disableBadLanguage: boolean;
   excludeEndedWith: string[];
   excludeBeginningWith: string[];
-  excludeSurroundedBy: string[];
 }
