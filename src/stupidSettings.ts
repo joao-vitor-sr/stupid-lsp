@@ -9,6 +9,10 @@ export class SettingsState {
       ['[', ']'],
     ];
     this.disableBadLanguage = false;
+
+    this.excludeEndedWith = ["'", '"'];
+    this.excludeBeginningWith = ["'", '"'];
+    this.excludeSurroundedBy = ["'", '"'];
   }
 
   documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
@@ -16,4 +20,7 @@ export class SettingsState {
   maxErrorsComputed: number;
   charsComparassion: string[][];
   disableBadLanguage: boolean;
+  excludeEndedWith: string[];
+  excludeBeginningWith: string[];
+  excludeSurroundedBy: string[];
 }
