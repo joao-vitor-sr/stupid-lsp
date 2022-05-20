@@ -69,9 +69,19 @@ export class ValidationHandler {
     for (let i = 0; i <= txt.length; i++) {
       if (depthChars.length >= this.stupidSettings.maxErrorsComputed) break;
 
-      if (this.openChars.includes(txt[i])) {
+      if (
+        this.validateSpecialCase({
+          previousChar: txt[i - 1],
+          followingChar: txt[i + 1],
+        }) &&
+        this.openChars.includes(txt[i])
+      ) {
         depthChars.push({ start: i, end: i + txt[i].length, char: txt[i] });
       } else if (
+        this.validateSpecialCase({
+          previousChar: txt[i - 1],
+          followingChar: txt[i + 1],
+        }) &&
         this.closeChars.includes(txt[i]) &&
         depthChars[depthChars.length - 1].char ==
           this.returnConntraryChar(txt[i])
@@ -103,6 +113,32 @@ export class ValidationHandler {
     });
 
     return diagnostics;
+  }
+
+  private preivousCharIsValid(char: string) {
+    if (this.stupidSettings.excludeBeginningWith.includes(char)) return true;
+
+    return false;
+  }
+
+  private followingCharIsValid(char: string) {
+    if (this.stupidSettings.excludeEndedWith.includes(char)) return true;
+
+    return false;
+  }
+
+  validateSpecialCase({
+    previousChar,
+    followingChar,
+  }: {
+    previousChar: string;
+    followingChar: string;
+  }): boolean {
+    if (this.preivousCharIsValid(previousChar)) return false;
+
+    if (this.followingCharIsValid(followingChar)) return false;
+
+    return true;
   }
 
   validate(textDocument: TextDocument): void {
