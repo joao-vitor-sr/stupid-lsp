@@ -1,24 +1,35 @@
 import { TextDocuments, ClientCapabilities } from 'vscode-languageserver/node';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 
+export interface Settings {
+  messages: {
+    disableBadLanguage: boolean;
+  };
+  validation: {
+    maxErrorsComputed: number;
+    charsComparassion: string[][];
+    excludeEndedWith: string[];
+    excludeBeginningWith: string[];
+  };
+}
+
 export class SettingsState {
   constructor() {
-    this.maxErrorsComputed = 5000;
     this.charsComparassion = [
       ['(', ')'],
       ['[', ']'],
     ];
-    this.disableBadLanguage = false;
-
     this.excludeEndedWith = ["'", '"'];
     this.excludeBeginningWith = ['"', "'"];
   }
 
   documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
   capabilities: ClientCapabilities | undefined;
-  maxErrorsComputed: number;
+  maxErrorsComputed = 5000;
   charsComparassion: string[][];
-  disableBadLanguage: boolean;
+  disableBadLanguage = false;
   excludeEndedWith: string[];
   excludeBeginningWith: string[];
+  hasConfigurationCapability = false;
+  clientDynamicRegisterSupport = false;
 }

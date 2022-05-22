@@ -104,9 +104,7 @@ export class ValidationHandler {
           start: textDocument.positionAt(position.start),
           end: textDocument.positionAt(position.end),
         },
-        message: this.stupidSettings.disableBadLanguage
-          ? 'Char is not closed'
-          : 'JUST CLOSES THIS SH!#',
+        message: 'JUST CLOSES THIS SH!#',
         source: 'ex',
       };
       diagnostics.push(diagnostic);

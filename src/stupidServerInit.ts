@@ -20,7 +20,7 @@ class STUPIDServerInit {
      * The server receives the root path(s) of the workspace and the client
      * capabilities.
      */
-    connection.onInitialize((params: InitializeParams) =>
+    this.connection.onInitialize((params: InitializeParams) =>
       this.connectionInitialized(params)
     );
   }
@@ -28,6 +28,12 @@ class STUPIDServerInit {
   // public for test setup
   private connectionInitialized(params: InitializeParams): InitializeResult {
     this.stupidSettings.capabilities = params.capabilities;
+
+    this.stupidSettings.hasConfigurationCapability = !!(
+      this.stupidSettings.capabilities.workspace &&
+      !!this.stupidSettings.capabilities.workspace.configuration
+    );
+
     this.registerHandlers();
 
     return {
