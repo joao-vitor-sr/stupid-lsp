@@ -13,9 +13,9 @@ Handles if chars were not closed
 
 ## Installation
 
-for now, the unique way to install it from the source so clone the project
-into a folder that you can still access later and install running
-`yarn`, and then `yarn build`, the binary will be in the _./bin_ folder
+for now, the unique way to install it is from the source so clone the project
+into a folder that you can still access later `git clone https://github.com/joao-vitor-sr/stupid-lsp.git ./folder`
+and install running `yarn`, and then `yarn build`, the binary will be in the _./bin_ folder
 
 ### Runing from NeoVim
 
