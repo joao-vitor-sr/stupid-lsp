@@ -34,3 +34,10 @@ if not configs.stupid_lsp then
     }
 end
 ```
+
+## Known issues
+
+the stupid-LSP is arbitrary about the language, this is good for simplicity, and also it's good to be able to run it in any language.
+but how it's arbitrary there are some issues.
+
+- the stupid-LSP can't detect if the parentheses or brackets are a string or not, so let's say that you have something like this `if (a == '(')` the server will return an error because the server can't detect that the open parenthesis is a string and it's not to be validated.

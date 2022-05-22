@@ -19,8 +19,8 @@ export class SettingsState {
       ['(', ')'],
       ['[', ']'],
     ];
-    this.excludeEndedWith = ["'", '"'];
-    this.excludeBeginningWith = ['"', "'"];
+    this.excludeEndedWith = ['\\'];
+    this.excludeBeginningWith = ['\\'];
   }
 
   documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
